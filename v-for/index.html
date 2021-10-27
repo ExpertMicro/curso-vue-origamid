@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item, index) in lista">{{item}} {{index}}</li>
+    </ul>
+    <button @click="removerItem">Remover</button>
+    <button @click="modificarItem">Modificar</button>
+    <div v-for="n in 10">
+      {{n}}
+    </div>
+  </div>
+  
+  <script>
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        lista: ["Banana", "Uva", "Laranja"]
+      },
+      methods: {
+        removerItem() {
+          this.lista.pop();
+        },
+        modificarItem() {
+          this.lista[0] = "Pera";
+        }
+      }
+    });
+
+
+
+  </script>
+</body>
+</html>
