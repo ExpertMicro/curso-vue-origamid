@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p :class="[cor, {ativo: estaAtivo}]">Cor</p>
+    <p :class="{ativo: estaAtivo, verde: elementoVerde}">Mostrar texto</p>
+    <button @click="estaAtivo = !estaAtivo">Click</button>
+
+    <a :style="{background: bgColor, fontSize: fontSize + 'px'}" href="">Estilize isso</a>
+    <button @click="fontSize++">Aumentar</button>
+    <p :style="estiloBotao">Novo texto</p>
+    <p :style="estiloParagrafo">Paragrafo</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        cor: "azul",
+        background: "vermelho",
+        bgColor: "tomato",
+        fontSize: 20,
+        estaAtivo: true,
+        elementoVerde: true,
+        estiloBotao: {
+          background: "tomato",
+          fontSize: "20px",
+          color: "#fff"
+        }
+      },
+      computed: {
+        estiloParagrafo() {
+          const tamanho = Math.random() * 100;
+          return {
+            fontSize: tamanho + 'px'
+          }
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .vermelho {
+      background: red;
+    }
+    .azul {
+      color: blue;
+    }
+    .verde {
+      color: green;
+    }
+    .ativo {
+      background: rebeccapurple;
+    }
+  </style>
+</body>
+</html>
